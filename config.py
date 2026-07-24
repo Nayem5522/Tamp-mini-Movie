@@ -21,25 +21,33 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 # কনফিগারেশন ভ্যারিয়েবলসমূহ
-TOKEN = "8228670087:AAEPLRqdkpbKOc0ZZoG02wpY1N7MoiH4fmo"                  
-API_ID = 19234664                              
-API_HASH = "29c2f3b3d115cf1b0231d816deb271f5"                
-SESSION_STRING = ""                            
-MONGO_URL = "mongodb+srv://manogog673:manogog673@cluster0.ot1qt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"              
-OWNER_ID = 8058281460                           
-CHANNEL_ID = "-1003569770431"                   
-ADMIN_PASS = "admin123"                        
-BOT_USERNAME = "MoviesLinkBD_Bot"                
+
+TOKEN = os.getenv("TOKEN")
+API_ID = int(os.getenv("API_ID", "0"))
+API_HASH = os.getenv("API_HASH")
+SESSION_STRING = os.getenv("SESSION_STRING", "")
+MONGO_URL = os.getenv("MONGO_URL")
+
+OWNER_ID = int(os.getenv("OWNER_ID", "0"))
+CHANNEL_ID = os.getenv("CHANNEL_ID")
+ADMIN_PASS = os.getenv("ADMIN_PASS")
+BOT_USERNAME = os.getenv("BOT_USERNAME")
 
 APP_URL = os.getenv("APP_URL", "http://localhost:8000")
 
-TUTORIAL_LINK = "https://t.me/HowtoDowlnoad/41"
-REQUEST_LINK = "https://t.me/+dld6-uEkdvQ5Yjg1"
+TUTORIAL_LINK = os.getenv(
+    "TUTORIAL_LINK",
+    "https://t.me/HowtoDowlnoad/41"
+)
 
-_db_ch = "-1003972700063"                       
-DB_CHANNEL_ID = int(_db_ch) if _db_ch.lstrip('-').isdigit() else None
+REQUEST_LINK = os.getenv(
+    "REQUEST_LINK",
+    "https://t.me/+dld6-uEkdvQ5Yjg1"
+)
 
-PORT_NUMBER = 8000                             
+DB_CHANNEL_ID = int(os.getenv("DB_CHANNEL_ID", "0"))
+
+PORT_NUMBER = int(os.getenv("PORT", "8000"))                             
 
 # বটের মূল অবজেক্ট (HTML পার্স মোড সহ)
 bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
